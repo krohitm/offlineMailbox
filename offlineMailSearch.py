@@ -24,8 +24,10 @@ def search(query, raw_result):
         if raw_result:
             click.echo(json.dumps(matches, indent = 4))
         for hit in hits:
-            #getting only the main subject lines and the paths of the meta files
-            click.echo('Subject: {}\nPath: {}\n\n'.format(
+            #getting only To, from, and the main subject lines and the paths of the meta files
+            click.echo('To: {}\nFrom: {}\nSubject: {}\nPath: {}\n\n'.format(
+                hit['_source']['to'],
+                hit['_source']['from'],
                 hit['_source']['subject'],
                 hit['_source']['path']
             ))
